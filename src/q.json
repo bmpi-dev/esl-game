@@ -1,14 +1,106 @@
 [
     {
-        "category": "tech",
-        "question": "java"
+        "category": "dev",
+        "question": "What did you learn yesterday/this week?"
     },
     {
-        "category": "tech",
-        "question": "rust"
+        "category": "dev",
+        "question": "What excites or interests you about coding?"
     },
     {
-        "category": "tech",
-        "question": "c"
+        "category": "dev",
+        "question": "What is a recent technical challenge you experienced and how did you solve it?"
+    },
+    {
+        "category": "dev",
+        "question": "When building a new web site or maintaining one, can you explain some techniques you have used to increase performance?"
+    },
+    {
+        "category": "dev",
+        "question": "Can you describe some SEO best practices or techniques you have used lately?"
+    },
+    {
+        "category": "dev",
+        "question": "Can you explain any common techniques or recent issues solved in regards to front-end security?"
+    },
+    {
+        "category": "dev",
+        "question": "What actions have you personally taken on recent projects to increase maintainability of your code?"
+    },
+    {
+        "category": "dev",
+        "question": "Talk about your preferred development environment."
+    },
+    {
+        "category": "dev",
+        "question": "Which version control systems are you familiar with?"
+    },
+    {
+        "category": "dev",
+        "question": "Can you describe your workflow when you create a web page?"
+    },
+    {
+        "category": "dev",
+        "question": "If you have 5 different stylesheets, how would you best integrate them into the site?"
+    },
+    {
+        "category": "dev",
+        "question": "Can you describe the difference between progressive enhancement and graceful degradation?"
+    },
+    {
+        "category": "dev",
+        "question": "How would you optimize a website's assets/resources?"
+    },
+    {
+        "category": "dev",
+        "question": "How many resources will a browser download from a given domain at a time?"
+    },
+    {
+        "category": "dev",
+        "question": "Name 3 ways to decrease page load (perceived or actual load time)."
+    },
+    {
+        "category": "dev",
+        "question": "If you jumped on a project and they used tabs and you used spaces, what would you do?"
+    },
+    {
+        "category": "dev",
+        "question": "Describe how you would create a simple slideshow page."
+    },
+    {
+        "category": "dev",
+        "question": "If you could master one technology this year, what would it be?"
+    },
+    {
+        "category": "dev",
+        "question": "Explain the importance of standards and standards bodies."
+    },
+    {
+        "category": "dev",
+        "question": "Explain some of the pros and cons for CSS animations versus JavaScript animations."
+    },
+    {
+        "category": "dev",
+        "question": "What does CORS stand for and what issue does it address?"
+    },
+    {
+        "category": "dev",
+        "question": "How did you handle a disagreement with your boss or your collaborator?"
+    },
+    {
+        "category": "dev",
+        "question": "What resources do you use to learn about the latest in front end development and design?"
+    },
+    {
+        "category": "dev",
+        "question": "What skills are needed to be a good front-end developer?"
+    },
+    {
+        "category": "dev",
+        "question": "What role do you see yourself?"
+    },
+    {
+        "category": "dev",
+        "question": "Explain the difference between cookies, session storage, and local storage?"
     }
 ]
