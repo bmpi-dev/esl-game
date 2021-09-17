@@ -1,0 +1,14 @@
+[
+    {
+        "category": "tech",
+        "question": "java"
+    },
+    {
+        "category": "tech",
+        "question": "rust"
+    },
+    {
+        "category": "tech",
+        "question": "c"
+    }
+]
