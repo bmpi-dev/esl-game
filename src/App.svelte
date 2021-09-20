@@ -23,6 +23,11 @@
 
 	let q = qs[Math.floor(Math.random()*qs.length)];
 
+	// play question
+	window.onload = function() {
+		window.speechSynthesis.speak(new SpeechSynthesisUtterance(q.question));
+	}
+
 </script>
 
 <main class="bg-gray-200 p-8 m-8 rounded-lg">
