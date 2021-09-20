@@ -40,7 +40,7 @@
 	document.body.onkeyup = function(e){
 		if(e.code == 'Space'){
 			play();
-			setTimeout(function(){ show = true; }, 3000);	
+			setTimeout(function(){ show = true; }, 5000);	
 		}
 	}
 
