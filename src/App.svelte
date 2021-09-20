@@ -59,7 +59,7 @@
 		let mediaRecorder;
 
 		let onSuccess = function(stream) {
-			const mediaRecorder = new MediaRecorder(stream);
+			mediaRecorder = new MediaRecorder(stream);
 			mediaRecorder.onstop = function(e) {
 				let audio = document.getElementById("audio");
 				audio.controls = true;
