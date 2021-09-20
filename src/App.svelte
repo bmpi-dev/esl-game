@@ -45,18 +45,12 @@
 
 	// record audio
 
-	let recordState = 0; // -1 - disable, 0 - init, 1 - record, 2 - stop, 3 - play
+	let chunks = [];
+	let mediaRecorder;
 
-	function record() {
-		if (!navigator.mediaDevices.getUserMedia) {
-			console.log('getUserMedia not supported on your browser!');
-			return;
-		}
-
+	if (navigator.mediaDevices.getUserMedia) {
 		console.log('getUserMedia supported.');
 		const constraints = { audio: true };
-		let chunks = [];
-		let mediaRecorder;
 
 		let onSuccess = function(stream) {
 			mediaRecorder = new MediaRecorder(stream);
@@ -78,6 +72,15 @@
 		}
 
 		navigator.mediaDevices.getUserMedia(constraints).then(onSuccess, onError);
+	}
+
+	let recordState = 0; // -1 - disable, 0 - init, 1 - record, 2 - stop, 3 - play
+
+	function record() {
+		if (!navigator.mediaDevices.getUserMedia) {
+			console.log('getUserMedia not supported on your browser!');
+			return;
+		}
 
 		if (recordState === 0) {
 			// start record
