@@ -28,10 +28,23 @@
 		window.speechSynthesis.speak(new SpeechSynthesisUtterance(q.question));
 	}
 
+	let show = false;
+
+	document.body.onkeyup = function(e){
+		if(e.code == 'Space'){
+			show = true;
+		}
+	}
+
 </script>
 
-<main class="bg-gray-200 p-8 m-8 rounded-lg">
-	<p>{q.question}</p>
+<main class="bg-gray-200 p-8 m-8 rounded-lg" onclick="showQuestion">
+	{#if !show}
+	<p style='color: gray'>&lt;press spacebar to show question&gt;</p>
+	{/if}
+	{#if show}
+    	<p>{q.question}</p>
+	{/if}
 </main>
 
 <style>
