@@ -29,7 +29,7 @@
 
 	// play question
 
-	window.onload = function() {
+	function play() {
 		window.speechSynthesis.speak(new SpeechSynthesisUtterance(q.question));
 	}
 
@@ -39,7 +39,8 @@
 
 	document.body.onkeyup = function(e){
 		if(e.code == 'Space'){
-			show = true;
+			play();
+			setTimeout(function(){ show = true; }, 3000);	
 		}
 	}
 
@@ -101,7 +102,7 @@
 
 <main class="bg-gray-200 p-8 m-8 rounded-lg">
 	{#if !show}
-	<p style='color: gray'>&lt;press spacebar to show question&gt;</p>
+	<p style='color: gray'>&lt;press spacebar to play question&gt;</p>
 	{/if}
 	{#if show}
     	<p>{q.question}</p>
@@ -110,12 +111,12 @@
 
 <div class="flex items-center justify-center">
 	{#if recordState === 0 || recordState === 1}
-		<div class="bg-green-600 h-24 w-24 rounded-full flex items-center justify-center text-white" on:click="{record}">
+		<div class="bg-green-600 py-3 px-6 rounded-full flex items-center justify-center text-white" on:click="{record}">
 			{#if recordState === 0}
-				Record
+				record your answer
 			{/if}
 			{#if recordState === 1}
-				Stop
+				stop record
 			{/if}
 		</div>
 	{/if}
