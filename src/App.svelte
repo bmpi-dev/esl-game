@@ -1,41 +1,44 @@
 <script>
 	import qs from './q.json';
 
-	// shuffle question
+	// shuffle and get one question
+
+	let q;
+	let show = false;
 
 	function shuffle(array) {
 		let currentIndex = array.length,  randomIndex;
-
 		// While there remain elements to shuffle...
 		while (currentIndex != 0) {
-
 			// Pick a remaining element...
 			randomIndex = Math.floor(Math.random() * currentIndex);
 			currentIndex--;
-
 			// And swap it with the current element.
-			[array[currentIndex], array[randomIndex]] = [
-			array[randomIndex], array[currentIndex]];
+			[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
 		}
 
 		return array;
 	}
 
-	shuffle(qs);
+	function getQuestion() {
+		shuffle(qs);
+		q = qs[Math.floor(Math.random() * qs.length)];
+	}
 
-	// random get one question
+	getQuestion();
 
-	let q = qs[Math.floor(Math.random()*qs.length)];
+	// getNextQuestion
+
+	function getNextQuestion() {
+		show = false;
+		getQuestion();
+	}
 
 	// play question
 
 	function play() {
 		window.speechSynthesis.speak(new SpeechSynthesisUtterance(q.question));
 	}
-
-	// hidden question
-
-	let show = false;
 
 	function showQuestion() {
 		play();
@@ -63,6 +66,7 @@
 			mediaRecorder.onstop = function(e) {
 				let audio = document.getElementById("audio");
 				audio.controls = true;
+				// Let's append blobs for now, we could also upload them to the network.
 				const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
 				const audioURL = window.URL.createObjectURL(blob);
 				audio.src = audioURL;
@@ -105,9 +109,10 @@
 
 </script>
 
-<main class="bg-gray-200 p-8 m-8 rounded-lg" on:click="{showQuestion}">
+<main class="bg-gray-200 p-8 m-8 rounded-lg" on:click={showQuestion} on:dblclick={getNextQuestion}>
 	{#if !show}
-	<p style='color: gray'>&lt;click or press spacebar to play question&gt;</p>
+		<p style='color: gray; font-size:1.3em;'>&lt;click or press spacebar to play question&gt;</p>
+		<p style='color: gray; font-size:1.3em;'>&lt;double click to get next question&gt;</p>
 	{/if}
 	{#if show}
     	<p>{q.question}</p>
