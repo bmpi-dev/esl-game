@@ -37,13 +37,18 @@
 
 	let show = false;
 
-	document.body.onkeyup = function(e){
-		if(e.code == 'Space'){
-			play();
-			setTimeout(function(){ show = true; }, 5000);	
-		}
+	function showQuestion() {
+		play();
+		setTimeout(function(){ show = true; }, 5000);
 	}
 
+
+	document.body.onkeyup = function(e){
+		if(e.code == 'Space'){
+			showQuestion();
+		}
+	}
+	
 	// record audio
 
 	let chunks = [];
@@ -100,9 +105,9 @@
 
 </script>
 
-<main class="bg-gray-200 p-8 m-8 rounded-lg">
+<main class="bg-gray-200 p-8 m-8 rounded-lg" on:click="{showQuestion}">
 	{#if !show}
-	<p style='color: gray'>&lt;press spacebar to play question&gt;</p>
+	<p style='color: gray'>&lt;click or press spacebar to play question&gt;</p>
 	{/if}
 	{#if show}
     	<p>{q.question}</p>
