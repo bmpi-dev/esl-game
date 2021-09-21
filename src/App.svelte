@@ -20,18 +20,22 @@
 		return array;
 	}
 
-	function getQuestion() {
-		shuffle(qs);
-		q = qs[Math.floor(Math.random() * qs.length)];
+	function randomQuestion(qs) {
+		return qs[Math.floor(Math.random() * qs.length)];
 	}
 
-	getQuestion();
+	function getQuestion() {
+		hiddenQuestion();
+		shuffle(qs);
+		q = randomQuestion(qs);
+	}
 
-	// getNextQuestion
-
-	function getNextQuestion() {
+	function hiddenQuestion() {
 		show = false;
-		getQuestion();
+	}
+
+	function showQuestion() {
+		show = true;
 	}
 
 	// play question
@@ -40,15 +44,16 @@
 		window.speechSynthesis.speak(new SpeechSynthesisUtterance(q.question));
 	}
 
-	function showQuestion() {
+	function playQuestion() {
+		getQuestion();
 		play();
-		setTimeout(function(){ show = true; }, 5000);
+		setTimeout(showQuestion, 5000);
 	}
 
 
 	document.body.onkeyup = function(e){
 		if(e.code == 'Space'){
-			showQuestion();
+			playQuestion();
 		}
 	}
 	
@@ -109,10 +114,9 @@
 
 </script>
 
-<main class="bg-gray-200 p-8 m-8 rounded-lg" on:click={showQuestion} on:dblclick={getNextQuestion}>
+<main class="bg-gray-200 p-8 m-8 rounded-lg" on:click={playQuestion}>
 	{#if !show}
 		<p style='color: gray; font-size:1.3em;'>&lt;click or press spacebar to play question&gt;</p>
-		<p style='color: gray; font-size:1.3em;'>&lt;double click to get next question&gt;</p>
 	{/if}
 	{#if show}
     	<p>{q.question}</p>
