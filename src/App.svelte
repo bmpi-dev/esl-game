@@ -1,10 +1,13 @@
 <script>
 	import qs from './q.json';
 
-	// shuffle and get one question
-
 	let q;
 	let show = false;
+	let recordState = 0; // -1 - disable, 0 - init, 1 - record, 2 - stop, 3 - play
+	let chunks = [];
+	let mediaRecorder;
+
+	// shuffle and get one question
 
 	function shuffle(array) {
 		let currentIndex = array.length,  randomIndex;
@@ -25,6 +28,7 @@
 	}
 
 	function getQuestion() {
+		recordState = 0;
 		hiddenQuestion();
 		shuffle(qs);
 		q = randomQuestion(qs);
@@ -59,9 +63,6 @@
 	
 	// record audio
 
-	let chunks = [];
-	let mediaRecorder;
-
 	if (navigator.mediaDevices.getUserMedia) {
 		console.log('getUserMedia supported.');
 		const constraints = { audio: true };
@@ -89,8 +90,6 @@
 		navigator.mediaDevices.getUserMedia(constraints).then(onSuccess, onError);
 	}
 
-	let recordState = 0; // -1 - disable, 0 - init, 1 - record, 2 - stop, 3 - play
-
 	function record() {
 		if (!navigator.mediaDevices.getUserMedia) {
 			console.log('getUserMedia not supported on your browser!');
@@ -99,6 +98,7 @@
 
 		if (recordState === 0) {
 			// start record
+			chunks = [];
 			recordState = 1;
 			mediaRecorder.start();
 			console.log(mediaRecorder.state);
