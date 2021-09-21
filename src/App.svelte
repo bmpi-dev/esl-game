@@ -72,7 +72,7 @@
 				let audio = document.getElementById("audio");
 				audio.controls = true;
 				// Let's append blobs for now, we could also upload them to the network.
-				const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+				const blob = new Blob(chunks, { 'type': 'audio/mpeg' });
 				const audioURL = window.URL.createObjectURL(blob);
 				audio.src = audioURL;
 				console.log("recorder stopped");
